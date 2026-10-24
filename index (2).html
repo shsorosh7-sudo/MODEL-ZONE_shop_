@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="فروشگاه ماکت ماشین و لوازم ساخت و شخصی‌سازی ماکت">
+<title>ModelZone | دنیای ماکت و لوازم</title>
+<style>
+:root{--bg:#f4f6f8;--panel:#fff;--ink:#18212b;--muted:#647180;--line:#e0e6ec;--blue:#e3262e;--nav:#101820;--radius:16px}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}
+.wrap{width:min(1200px,calc(100% - 32px));margin:auto}
+.top{background:var(--nav);color:#fff;border-bottom:1px solid #25313d}
+.nav{display:flex;align-items:center;gap:22px;min-height:78px}
+.logo{font-weight:900;font-size:23px;white-space:nowrap;letter-spacing:-.5px}.logo span{color:#39a0ff}
+.navlinks{display:flex;gap:18px;font-size:13px;color:#d8e0e7}.navlinks a:hover{color:#ff777d}
+.search{margin-right:auto;display:flex;max-width:310px;flex:1}.search input{width:100%;min-width:0;border:1px solid #35414d;background:#1b2631;color:white;border-radius:10px;padding:10px 13px;outline:none}
+.cart{background:#342326;color:white;border:1px solid #634044;border-radius:10px;padding:9px 13px;white-space:nowrap}
+.hero{margin:22px auto 18px;border-radius:18px;overflow:hidden;min-height:290px;background:linear-gradient(90deg,rgba(8,13,18,.86),rgba(8,13,18,.12)),url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=85') center 56%/cover;display:flex;align-items:center;color:#fff}
+.hero-copy{padding:35px 5%;max-width:600px}.eyebrow{color:#ff777d;font-size:13px;font-weight:bold}.hero h1{font-size:clamp(27px,4vw,43px);line-height:1.5;margin:8px 0}.hero p{color:#e0e8ef;max-width:470px;margin:0 0 20px}
+.btn{border:0;background:var(--blue);color:#fff;border-radius:10px;padding:10px 16px;font-weight:bold;display:inline-flex;align-items:center;justify-content:center;gap:7px}.btn:hover{background:#bd171f}.btn.secondary{background:#edf4fb;color:#b71921}.btn.secondary:hover{background:#ffe0e1}
+.features{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:28px;padding:13px}.feature{text-align:center;padding:6px 8px;border-left:1px solid var(--line);font-size:13px;font-weight:bold}.feature:last-child{border:0}.feature small{display:block;color:var(--muted);font-weight:normal}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:24px 0 12px}.section-head h2{font-size:21px;margin:0}.section-head p{font-size:12px;color:var(--muted);margin:0}
+.layout{display:grid;grid-template-columns:230px 1fr;gap:18px;align-items:start}
+.sidebar,.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius)}
+.sidebar{padding:16px;position:sticky;top:12px}.sidebar h3{margin:0 0 10px;font-size:16px}.cat{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:9px;color:#344251;font-size:13px;cursor:pointer}.cat:hover,.cat.active{background:#fff0f0;color:#bd171f;font-weight:bold}.side-note{margin-top:18px;padding:12px;background:#f5f8fb;border-radius:10px;font-size:12px;color:var(--muted)}
+.toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:12px}.toolbar label{font-size:12px;color:var(--muted)}select{border:1px solid var(--line);background:#fff;border-radius:9px;padding:8px;color:var(--ink)}
+.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.product{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .18s,box-shadow .18s}.product:hover{transform:translateY(-3px);box-shadow:0 8px 24px #17253612}
+.product img{display:block;width:100%;aspect-ratio:1.3;object-fit:cover;background:#e7ebef}.product-body{padding:12px}.tag{display:inline-block;background:#fff0f0;color:#bd171f;border-radius:6px;font-size:10px;padding:2px 7px;margin-bottom:5px}.product h3{font-size:14px;margin:0 0 4px;line-height:1.8}.desc{font-size:11px;color:var(--muted);min-height:40px;margin:0 0 8px}.price-row{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:10px}.price{font-size:14px;font-weight:bold}.unit{font-size:10px;color:var(--muted)}.product .btn{width:100%;font-size:12px;padding:8px}
+.empty{display:none;text-align:center;padding:35px;color:var(--muted);background:white;border-radius:12px}
+.promo{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}.promo-card{display:flex;min-height:120px;align-items:center;gap:12px;padding:12px;border-radius:13px;background:#17232e;color:#fff;overflow:hidden}.promo-card img{width:38%;height:100px;object-fit:cover;border-radius:9px}.promo-card h3{font-size:14px;margin:0}.promo-card p{font-size:11px;color:#c2ccd5;margin:3px 0 8px}.promo-card a{font-size:11px;color:#ff777d}
+footer{margin-top:32px;background:#111a22;color:#d6e0e8;padding:28px 0 15px}.footgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:28px}.footgrid h3{font-size:15px;color:white}.footgrid p,.footgrid a{font-size:12px;color:#b6c2cd}.footlinks{display:grid;gap:5px}.copyright{border-top:1px solid #29343e;margin-top:20px;padding-top:12px;font-size:11px;color:#91a0ad;display:flex;justify-content:space-between;gap:12px}
+.notice{position:fixed;bottom:18px;left:18px;background:#14212d;color:#fff;border-radius:12px;padding:12px 16px;box-shadow:0 8px 30px #0002;display:none;z-index:5;font-size:13px}
+.cart-overlay{position:fixed;inset:0;background:#0007;z-index:10;display:none;align-items:stretch;justify-content:flex-start}.cart-drawer{background:white;width:min(420px,100%);height:100%;padding:20px;overflow:auto}.drawer-head{display:flex;justify-content:space-between;align-items:center}.drawer-head h2{font-size:20px}.close{border:0;background:#f8e7e8;border-radius:8px;padding:7px 12px}.cart-line{display:grid;grid-template-columns:65px 1fr auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.cart-line img{width:65px;height:55px;object-fit:cover;border-radius:8px}.cart-line h4{margin:0;font-size:12px}.cart-line small{color:var(--muted)}.qty{display:flex;align-items:center;gap:7px;margin-top:5px}.qty button{border:1px solid var(--line);background:#fff;border-radius:5px;width:24px;height:24px}.cart-total{display:flex;justify-content:space-between;font-weight:bold;margin:18px 0}
+@media(max-width:900px){.navlinks{display:none}.layout{grid-template-columns:1fr}.sidebar{position:static}.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.promo{grid-template-columns:1fr}.promo-card img{width:110px}.footgrid{grid-template-columns:1fr 1fr}.footgrid>div:first-child{grid-column:1/-1}}
+@media(max-width:560px){.wrap{width:calc(100% - 22px)}.nav{gap:9px;min-height:66px;flex-wrap:wrap;padding:10px 0}.logo{font-size:19px}.search{order:3;flex-basis:100%;max-width:none}.cart{margin-right:auto;font-size:12px;padding:7px 9px}.hero{min-height:260px;background-position:58% center}.hero-copy{padding:25px 18px}.hero h1{font-size:27px}.hero p{font-size:13px}.features{grid-template-columns:repeat(2,1fr);gap:5px}.feature{border-left:0;border-bottom:1px solid var(--line);padding:10px 3px}.feature:nth-child(odd){border-left:1px solid var(--line)}.feature:nth-last-child(-n+2){border-bottom:0}.section-head h2{font-size:18px}.products{gap:9px}.product-body{padding:9px}.product h3{font-size:12px}.desc{font-size:10px;min-height:48px}.price{font-size:12px}.product .btn{font-size:10px}.categories{grid-template-columns:repeat(2,1fr)}.toolbar{align-items:flex-start;flex-direction:column}.footgrid{grid-template-columns:1fr}.footgrid>div:first-child{grid-column:auto}.copyright{flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="ModelZone">Model<span>Zone</span></a>
+    <nav class="navlinks"><a href="#home">صفحه اصلی</a><a href="#products">محصولات</a><a href="#guides">راهنمای خرید</a><a href="#about">درباره ما</a><a href="#contact">تماس با ما</a></nav>
+    <form class="search" id="searchForm"><input id="searchInput" type="search" placeholder="جستجو در ماکت‌ها و لوازم..." aria-label="جستجوی محصولات"></form>
+    <button class="cart" id="openCart">🛒 سبد خرید <span id="cartCount">۰</span></button>
+  </div>
+</header>
+<main class="wrap" id="home">
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">دنیای ماکت‌ها، با جزئیات واقعی</div>
+      <h1>ماکت فقط یک مدل نیست؛<br><span style="color:#ff4b52">یک دنیا هیجان است!</span></h1>
+      <p>ماکت ماشین، چرخ و رینگ، ابزار ساخت و لوازم شخصی‌سازی برای علاقه‌مندان به دنیای ماکت.</p>
+      <a class="btn" href="#products">مشاهده محصولات ←</a>
+    </div>
+  </section>
+  <section class="features" aria-label="مزایا">
+    <div class="feature">🚚 ارسال سفارش<small>هماهنگی پیش از ارسال</small></div>
+    <div class="feature">🛡️ خرید مطمئن<small>اطلاعات شفاف محصول</small></div>
+    <div class="feature">🎧 پاسخ‌گویی<small>راهنمای انتخاب ماکت</small></div>
+    <div class="feature">✓ کیفیت کالا<small>بررسی مشخصات هر محصول</small></div>
+  </section>
+  <div class="section-head"><div><h2>محصولات فروشگاه</h2><p>محصولات نمایشی؛ قیمت و موجودی را پیش از فروش واقعی ویرایش کنید.</p></div></div>
+  <div class="layout">
+    <aside class="sidebar">
+      <h3>دسته‌بندی محصولات</h3>
+      <div class="categories" id="categories">
+        <div class="cat active" data-cat="همه">همه محصولات <span>›</span></div>
+        <div class="cat" data-cat="ماکت ماشین">🚗 ماکت ماشین <span>›</span></div>
+        <div class="cat" data-cat="چرخ و رینگ">🛞 چرخ و رینگ <span>›</span></div>
+        <div class="cat" data-cat="ابزار ساخت">🛠️ ابزار ساخت <span>›</span></div>
+        <div class="cat" data-cat="رنگ و مواد">🎨 رنگ و مواد <span>›</span></div>
+        <div class="cat" data-cat="لوازم جانبی">⚙️ لوازم جانبی <span>›</span></div>
+      </div>
+      <div class="side-note"><b>تازه‌کار هستی؟</b><br>قبل از خرید، مقیاس ماکت (مثل ۱:۱۸ یا ۱:۲۴) و سازگاری قطعات را بررسی کن.</div>
+    </aside>
+    <section>
+      <div class="toolbar"><label id="resultCount">نمایش محصولات</label><select id="sortSelect" aria-label="مرتب‌سازی"><option value="default">مرتب‌سازی پیش‌فرض</option><option value="low">ارزان‌ترین</option><option value="high">گران‌ترین</option></select></div>
+      <div class="products" id="products"></div>
+      <div class="empty" id="empty">محصولی با این مشخصات پیدا نشد.</div>
+    </section>
+  </div>
+  <section class="promo" id="guides">
+    <div class="promo-card"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=400&q=80" alt="ماکت ماشین"><div><h3>راهنمای خرید ماکت</h3><p>مقیاس، جنس و جزئیات را بشناس.</p><a href="#about">بیشتر بدانید ←</a></div></div>
+    <div class="promo-card"><img src="https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?auto=format&fit=crop&w=400&q=80" alt="ابزار مدل‌سازی"><div><h3>ابزار و لوازم ساخت</h3><p>برای ساخت و شخصی‌سازی ماکت.</p><a href="#products" data-promo-cat="ابزار ساخت">مشاهده ابزار ←</a></div></div>
+    <div class="promo-card"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=400&q=80" alt="ماشین اسپرت"><div><h3>ماکت‌های کلکسیونی</h3><p>برای شروع یا تکمیل کلکسیون.</p><a href="#products" data-promo-cat="ماکت ماشین">دیدن ماکت‌ها ←</a></div></div>
+  </section>
+  <section id="about" class="panel" style="padding:18px 20px;margin-top:20px"><h2 style="font-size:19px;margin-top:0">درباره ModelZone</h2><p style="color:var(--muted);font-size:13px;margin-bottom:0">یک فروشگاه تخصصی برای علاقه‌مندان به ماکت ماشین و لوازم مدل‌سازی. این نسخه، نمونه اولیه قابل ویرایش است؛ مشخصات فروشگاه، محصولات واقعی، قیمت‌ها و شرایط ارسال باید قبل از راه‌اندازی نهایی تکمیل شوند.</p></section>
+</main>
+<footer id="contact">
+  <div class="wrap">
+    <div class="footgrid">
+      <div><div class="logo">Model<span>Zone</span></div><p>دنیای ماکت ماشین و لوازم شخصی‌سازی. انتخاب آگاهانه برای علاقه‌مندان به جزئیات.</p></div>
+      <div><h3>دسترسی سریع</h3><div class="footlinks"><a href="#home">صفحه اصلی</a><a href="#products">محصولات</a><a href="#guides">راهنمای خرید</a></div></div>
+      <div><h3>ارتباط با ما</h3><p>راه ارتباطی و شبکه اجتماعی خودت را اینجا اضافه کن.</p><p>ایمیل: info@example.com</p></div>
+    </div>
+    <div class="copyright"><span>© ModelZone · نسخه آزمایشی</span><span>قیمت‌ها و تصاویر نمونه هستند و باید بررسی و جایگزین شوند.</span></div>
+  </div>
+</footer>
+<div class="notice" id="notice" role="status"></div>
+<div class="cart-overlay" id="cartOverlay">
+  <aside class="cart-drawer">
+    <div class="drawer-head"><h2>سبد خرید</h2><button class="close" id="closeCart">بستن ✕</button></div>
+    <div id="cartItems"></div>
+    <div class="cart-total"><span>جمع تقریبی</span><span id="cartTotal">۰ تومان</span></div>
+    <p style="font-size:11px;color:#647180">این نسخه پرداخت آنلاین ندارد. برای سفارش واقعی باید درگاه پرداخت و روش ارسال به سایت اضافه شود.</p>
+    <button class="btn" style="width:100%" id="checkoutBtn">ثبت درخواست سفارش</button>
+  </aside>
+</div>
+<script>
+const productsData=[
+{id:1,name:"ماکت تویوتا سوپرا",cat:"ماکت ماشین",price:1850000,desc:"ماکت کلکسیونی؛ مقیاس و مشخصات را پیش از فروش تأیید کنید.",tag:"محبوب",img:"https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=700&q=80"},
+{id:2,name:"ماکت نیسان Skyline",cat:"ماکت ماشین",price:2200000,desc:"مدل نمایشی برای علاقه‌مندان خودروهای ژاپنی.",tag:"کلکسیونی",img:"https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=700&q=80"},
+{id:3,name:"ست چرخ و رینگ ماکت",cat:"چرخ و رینگ",price:450000,desc:"قطعه تزئینی؛ قطر و سازگاری با مقیاس ماکت را بررسی کنید.",tag:"لوازم جانبی",img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80"},
+{id:4,name:"کیت موتور ماکت",cat:"لوازم جانبی",price:780000,desc:"قطعات نمایشی برای ساخت یا ارتقای جزئیات ماکت.",tag:"ویژه",img:"https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=700&q=80"},
+{id:5,name:"ست ابزار دقیق مدل‌سازی",cat:"ابزار ساخت",price:320000,desc:"ابزارهای پایه برای کارهای ظریف و مونتاژ.",tag:"مناسب شروع",img:"https://images.unsplash.com/photo-1581147036324-c1c89c2c8b5c?auto=format&fit=crop&w=700&q=80"},
+{id:6,name:"رنگ اکریلیک مدل‌سازی",cat:"رنگ و مواد",price:260000,desc:"نمونه نمایشی؛ رنگ، حجم و تعداد اقلام را هنگام درج محصول مشخص کنید.",tag:"ساخت",img:"https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=700&q=80"}
+];
+let activeCat="همه",query="",sort="default",cart={};
+const fa=n=>new Intl.NumberFormat("fa-IR").format(n);
+const money=n=>fa(n)+" تومان";
+const productsEl=document.getElementById("products");
+function renderProducts(){
+ let arr=productsData.filter(p=>(activeCat==="همه"||p.cat===activeCat)&&(`${p.name} ${p.cat} ${p.desc}`).toLowerCase().includes(query.toLowerCase()));
+ if(sort==="low")arr.sort((a,b)=>a.price-b.price);if(sort==="high")arr.sort((a,b)=>b.price-a.price);
+ productsEl.innerHTML=arr.map(p=>`<article class="product"><img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://placehold.co/700x500/e8edf2/263747?text=ModelZone'"><div class="product-body"><span class="tag">${p.tag}</span><h3>${p.name}</h3><p class="desc">${p.desc}</p><div class="price-row"><span class="price">${money(p.price)}</span><span class="unit">نمونه</span></div><button class="btn secondary" onclick="addToCart(${p.id})">＋ افزودن به سبد</button></div></article>`).join("");
+ document.getElementById("empty").style.display=arr.length?"none":"block";
+ document.getElementById("resultCount").textContent=fa(arr.length)+" محصول";
+}
+function addToCart(id){cart[id]=(cart[id]||0)+1;renderCart();showNotice("به سبد خرید اضافه شد.");}
+function renderCart(){
+ let entries=Object.entries(cart).filter(([id,q])=>q>0);
+ document.getElementById("cartCount").textContent=fa(entries.reduce((s,[id,q])=>s+q,0));
+ document.getElementById("cartItems").innerHTML=entries.length?entries.map(([id,q])=>{let p=productsData.find(x=>x.id==id);return `<div class="cart-line"><img src="${p.img}" alt=""><div><h4>${p.name}</h4><small>${money(p.price)}</small><div class="qty"><button onclick="changeQty(${id},-1)">−</button><span>${fa(q)}</span><button onclick="changeQty(${id},1)">+</button></div></div><b style="font-size:11px">${money(p.price*q)}</b></div>`}).join(""):'<p style="color:#647180">سبد خریدت هنوز خالی است.</p>';
+ document.getElementById("cartTotal").textContent=money(entries.reduce((s,[id,q])=>s+productsData.find(p=>p.id==id).price*q,0));
+}
+function changeQty(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];renderCart();}
+let noticeTimer;
+function showNotice(msg){const el=document.getElementById("notice");el.textContent=msg;el.style.display="block";clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>el.style.display="none",2400);}
+document.getElementById("categories").addEventListener("click",e=>{const c=e.target.closest(".cat");if(!c)return;activeCat=c.dataset.cat;document.querySelectorAll(".cat").forEach(x=>x.classList.toggle("active",x===c));renderProducts();});
+document.getElementById("searchForm").addEventListener("submit",e=>{e.preventDefault();query=document.getElementById("searchInput").value.trim();renderProducts();document.getElementById("products").scrollIntoView({behavior:"smooth",block:"start"});});
+document.getElementById("searchInput").addEventListener("input",e=>{query=e.target.value.trim();renderProducts();});
+document.getElementById("sortSelect").addEventListener("change",e=>{sort=e.target.value;renderProducts();});
+document.getElementById("openCart").onclick=()=>document.getElementById("cartOverlay").style.display="flex";
+document.getElementById("closeCart").onclick=()=>document.getElementById("cartOverlay").style.display="none";
+document.getElementById("cartOverlay").addEventListener("click",e=>{if(e.target.id==="cartOverlay")e.currentTarget.style.display="none";});
+document.querySelectorAll("[data-promo-cat]").forEach(a=>a.addEventListener("click",()=>{activeCat=a.dataset.promoCat;document.querySelectorAll(".cat").forEach(x=>x.classList.toggle("active",x.dataset.cat===activeCat));renderProducts();}));
+document.getElementById("checkoutBtn").onclick=()=>showNotice("برای سفارش واقعی، اطلاعات تماس و پرداخت باید اضافه شود.");
+renderProducts();renderCart();
+</script>
+</body>
+</html>
